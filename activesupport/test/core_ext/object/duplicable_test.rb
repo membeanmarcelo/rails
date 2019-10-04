@@ -6,10 +6,10 @@ require 'active_support/core_ext/numeric/time'
 class DuplicableTest < ActiveSupport::TestCase
   if RUBY_VERSION >= "2.4.1"
     RAISE_DUP = [method(:puts)]
-    ALLOW_DUP = ["1", 'symbol_from_string'.to_sym, Object.new, /foo/, [], {}, Time.now, Class.new, Module.new, BigDecimal.new("4.56"), nil, false, true, 1, 2.3]
+    ALLOW_DUP = ["1", 'symbol_from_string'.to_sym, Object.new, /foo/, [], {}, Time.now, Class.new, Module.new, BigDecimal("4.56"), nil, false, true, 1, 2.3]
   elsif RUBY_VERSION >= "2.4.0"  # Due to 2.4.0 bug. This elsif cannot be removed unless we drop 2.4.0 support...
     RAISE_DUP = [method(:puts), 'symbol_from_string'.to_sym]
-    ALLOW_DUP = ["1", Object.new, /foo/, [], {}, Time.now, Class.new, Module.new, BigDecimal.new("4.56"), nil, false, true, 1, 2.3]
+    ALLOW_DUP = ["1", Object.new, /foo/, [], {}, Time.now, Class.new, Module.new, BigDecimal("4.56"), nil, false, true, 1, 2.3]
   else
     RAISE_DUP = [nil, false, true, :symbol, 1, 2.3, method(:puts)]
     ALLOW_DUP = ["1", Object.new, /foo/, [], {}, Time.now, Class.new, Module.new]
@@ -18,7 +18,7 @@ class DuplicableTest < ActiveSupport::TestCase
     # raises TypeError exception. Checking here on the runtime whether BigDecimal
     # will allow dup or not.
     begin
-      bd = BigDecimal.new('4.56')
+      bd = BigDecimal('4.56')
       ALLOW_DUP << bd.dup
     rescue TypeError
       RAISE_DUP << bd

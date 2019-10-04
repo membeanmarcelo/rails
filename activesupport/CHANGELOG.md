@@ -1,3 +1,7 @@
+## Rails 4.2.11.2 (October 03, 2019) ##
+
+*   Fixed BigDecimal() to BigDecimal to avoid deprecation messages in Ruby 2.6
+
 ## Rails 4.2.11.1 (March 11, 2019) ##
 
 *   No changes.

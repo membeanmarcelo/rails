@@ -55,7 +55,7 @@ module ActiveSupport
         end
 
         def calculate_rounded_number(multiplier)
-          (number / BigDecimal.new(multiplier.to_f.to_s)).round * multiplier
+          (number / BigDecimal(multiplier.to_f.to_s)).round * multiplier
         end
 
         def digit_count(number)

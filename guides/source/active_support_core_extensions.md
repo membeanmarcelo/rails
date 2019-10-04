@@ -2088,7 +2088,7 @@ Extensions to `BigDecimal`
 The method `to_s` is aliased to `to_formatted_s`. This provides a convenient way to display a BigDecimal value in floating-point notation:
 
 ```ruby
-BigDecimal.new(5.00, 6).to_s  # => "5.0"
+BigDecimal(5.00, 6).to_s  # => "5.0"
 ```
 
 ### `to_formatted_s`
@@ -2096,19 +2096,19 @@ BigDecimal.new(5.00, 6).to_s  # => "5.0"
 Te method `to_formatted_s` provides a default specifier of "F".  This means that a simple call to `to_formatted_s` or `to_s` will result in floating point representation instead of engineering notation:
 
 ```ruby
-BigDecimal.new(5.00, 6).to_formatted_s  # => "5.0"
+BigDecimal(5.00, 6).to_formatted_s  # => "5.0"
 ```
 
 and that symbol specifiers are also supported:
 
 ```ruby
-BigDecimal.new(5.00, 6).to_formatted_s(:db)  # => "5.0"
+BigDecimal(5.00, 6).to_formatted_s(:db)  # => "5.0"
 ```
 
 Engineering notation is still supported:
 
 ```ruby
-BigDecimal.new(5.00, 6).to_formatted_s("e")  # => "0.5E1"
+BigDecimal(5.00, 6).to_formatted_s("e")  # => "0.5E1"
 ```
 
 Extensions to `Enumerable`
